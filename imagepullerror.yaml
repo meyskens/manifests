@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: maartje-imagepullerror
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: maartje-imagepullerror
+    spec:
+      containers:
+      - name: maartje-imagepullerror
+        image: alpine:jessie
+        command:
+          - ping
+          - localhost
