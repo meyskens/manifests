@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maartje-toohighrequest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maartje-toohighrequest
+  template:
+    metadata:
+      labels:
+        app: maartje-toohighrequest
+    spec:
+      containers:
+      - name: maartje-toohighrequest
+        image: alpine
+        command:
+          - ping
+          - localhost
+        resources:
+          limits:
+            cpu: 100
+            memory: 200Gi
+          requests:
+            cpu: 100
+            memory: 200Gi
+
