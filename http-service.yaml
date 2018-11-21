@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: http-test
+  labels:
+    app: http-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: http-test
+    spec:
+      containers:
+      - name: http-test
+        image: nginx
+        ports:
+          - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-test
+spec:
+  type: NodePort
+  selector:
+    app: http-test
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    targetPort: 80
