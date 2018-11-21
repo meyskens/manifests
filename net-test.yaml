@@ -1,0 +1,18 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: net-test
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: net-test
+    spec:
+      containers:
+      - name: net-test
+        image: nginx
+        ports:
+          - containerPort: 80
+          - containerPort: 5201
